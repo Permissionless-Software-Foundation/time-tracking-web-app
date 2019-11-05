@@ -1,61 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { newLogWork, updateLoggedWork } from "../services/loggedworks";
-import { getProjects } from "../services/projects";
-import { getUser } from "../services/auth"
+import { newLogWork, updateLoggedWork } from "../../services/loggedworks";
+import { getProjects } from "../../services/projects";
+import { getUser } from "../../services/auth"
 //import { timingSafeEqual } from 'crypto';
+import  './log-work.css'
 
 
-const StyledButton = styled.a`
-  margin: 10px;
-  margin-bottom: 25px;
-`
-const StyledForm = styled.form`
- padding:20px;
-`
-
-const OutMsgError = styled.p`
-  color: red;
-  font-weight: bold;
-  size: 18px;
-`
-const OutMsgSuccess = styled.p`
-  color: green;
-  font-weight: bold;
-  size: 18px;
-`
-const StyledSelect = styled.select`
-  margin: 10px;
-  margin-bottom: 25px;
-`
-const StyledInput = styled.input`
--webkit-appearance: none;
--ms-appearance: none;
-appearance: none;
-background: rgba(212, 212, 255, 0.035);
-border: none;
-border-radius: 0;
-color: inherit;
-display: block;
-outline: 0;
-padding: 0 1em;
-text-decoration: none;
-width: 100%;
-height: 2.75em;
-::-webkit-inner-spin-button,
-::-webkit-calendar-picker-indicator {
-    -webkit-appearance: none;
-}
-::-webkit-calendar-picker-indicator:hover {
-  background: rgba(212, 212, 255, 0.035);
-}
-`
-const StyledOption = styled.option`
-  margin: 5px;
-  color: black;
-  font-size: 14px;
-`
 let _this
 
 class LogWorkForm extends React.Component {
@@ -89,36 +40,36 @@ class LogWorkForm extends React.Component {
 
   render() {
     return (
-      <StyledForm className="grid-wrapper">
+      <form className="grid-wrapper log-form">
         <div className="col-3">
           Date:<br />
-          <StyledInput type="date" id="startTime" name="startTime" value={this.state.logwork.startTime} onChange={this.handleUpdate} />
+          <input type="date" id="startTime" name="startTime" value={this.state.logwork.startTime} onChange={this.handleUpdate} />
           <br />
         </div>
         <div className="col-3">
           Project:<br />
-          <StyledSelect className="button fit" id="selectProject" name="project" onChange={this.handleUpdate} >
-            <StyledOption value="" >Select Project</StyledOption>
+          <select className="button fit log-select" id="selectProject" name="project" onChange={this.handleUpdate} >
+            <option  value="" >Select Project</option>
             {
-              this.state.projects.map((value, i) => <StyledOption value={value._id} key={value._id}> {value.title} </StyledOption>)
+              this.state.projects.map((value, i) => <option value={value._id} key={value._id}> {value.title} </option>)
             }
-          </StyledSelect>
+          </select>
           <br />
         </div>
         <div className="col-3">
           Type of Work:<br />
-          <StyledSelect className="button fit" id="selectTypeOfWork" name="typeOfWork" onChange={this.handleUpdate} >
-            <StyledOption value="" >Select Work</StyledOption>
+          <select className="button fit log-select" id="selectTypeOfWork" name="typeOfWork" onChange={this.handleUpdate} >
+            <option value="" >Select Work</option>
             {
-              this.state.typeWorks.map(value => <StyledOption value={value} key={value}> {value} </StyledOption>)
+              this.state.typeWorks.map(value => <option value={value} key={value}> {value} </option>)
             }
-          </StyledSelect>
+          </select>
           <br />
         </div>
 
         <div className="col-3">
           Hours Worked:<br />
-          <StyledInput type="number" name="hours" placeholder="0" value={this.state.logwork.hours} onChange={this.handleUpdate} />
+          <input type="number" name="hours" placeholder="0" value={this.state.logwork.hours} onChange={this.handleUpdate} />
           <br />
         </div>
         <div className="col-12">
@@ -128,17 +79,17 @@ class LogWorkForm extends React.Component {
         </div>
         <div className="col-12">
           {
-            _this.state.isEdit ? <span><StyledButton href="#" className="button " id="addLogWorkBtn" onClick={this.cancelEdit}>Cancel</StyledButton> <StyledButton href="#" className="button special" id="addLogWorkBtn" onClick={this.updateLogwork}>Edit</StyledButton></span> :
-              <StyledButton href="#" className="button special" id="addLogWorkBtn" onClick={this.addNewLogWork}>Submit</StyledButton>
+            _this.state.isEdit ? <span><button href="#" className="button btn-margin" id="addLogWorkBtn" onClick={this.cancelEdit}>Cancel</button> <button href="#" className="button special btn-margin" id="addLogWorkBtn" onClick={this.updateLogwork}>Edit</button></span> :
+              <button href="#" className="button special btn-margin" id="addLogWorkBtn" onClick={this.addNewLogWork}>Submit</button>
           }
           <br />
         </div>
         <div className="col-12">
-          {this.state.message.type === 'ERR' ? <OutMsgError>{this.state.message.msg}</OutMsgError> :
-            <OutMsgSuccess>{this.state.message.msg}</OutMsgSuccess>}
+          {this.state.message.type === 'ERR' ? <p className="msg-err">{this.state.message.msg}</p> :
+            <p className="msg-suc">{this.state.message.msg}</p>}
         </div>
 
-      </StyledForm>
+      </form>
 
     )
   }
@@ -196,7 +147,7 @@ class LogWorkForm extends React.Component {
 
     const mySelectProject = document.getElementById("selectProject"); // get select element
     mySelectProject.selectedIndex = 0;  // set selected index by 0
-    _this.msgUpdate('','');
+    _this.msgUpdate('', '');
   }
   // restart state logwork to default for clear inputs
   clearInputs() {

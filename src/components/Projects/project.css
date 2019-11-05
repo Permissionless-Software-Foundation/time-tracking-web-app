@@ -1,0 +1,41 @@
+.projects-container{
+margin: 10px;
+}
+.selectProject{
+    margin-bottom: 25px;
+    -webkit-appearance: menulist;
+}
+.selectProject option , .styledSelect option{
+    margin: 5px;
+    color: black;
+    font-size: 16px;
+}
+.content-type{
+    display: flex;
+}
+.selectType{
+    width:69%;
+    margin-right:1%;
+    justify-content: flex-start;
+    margin-bottom: 25px;
+    -webkit-appearance: menulist;
+}
+.btn-type1{
+    margin-bottom: 25px;
+    width:30%;
+
+}
+.btn-type2{
+    margin-top: 5px;
+  margin-bottom: 25px;
+  width:50%;
+}
+.btn-type3 {
+    margin: 10px;
+    margin-bottom: 25px;
+} 
+.styledSelect{
+    margin: 10px;
+    margin-bottom: 25px;
+ 
+} 

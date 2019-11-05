@@ -1,6 +1,8 @@
 /* eslint-disable */
 
 import React from 'react'
+import { Link, navigate } from 'gatsby'
+import { isLoggedIn } from "../services/auth";
 
 const Banner = props => (
   <section id="banner" className="major">
@@ -20,9 +22,10 @@ const Banner = props => (
 
         <ul className="actions">
           <li>
-            <a href="/logwork" className="button next scrolly">
+            <Link className="button next scrolly" to={isLoggedIn() ? '/logwork' : '/login'}>Get Started</Link>
+            { /*   <a href="/logwork" className="button next scrolly">
               Get Started
-            </a>
+            </a>*/}
           </li>
         </ul>
       </div>

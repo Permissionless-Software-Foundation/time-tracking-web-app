@@ -1,0 +1,60 @@
+.works-table {
+    display:block!important;
+    text-align:center;
+    padding:1em; 
+}
+.works-table thead{
+    display:block!important;
+text-align:center;
+}
+.works-table tbody{
+    display:block!important;
+text-align:center;
+}
+.works-table tfoot {
+    display:block!important;
+text-align:center;
+}
+.works-table tr{
+    display:flex!important;
+}
+.works-table th{
+    text-align:center; 
+}
+.works-table p{
+    max-width: 100%;
+margin:0 auto;
+white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+.works-table td{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.works-table i{
+    font-size:2em;
+cursor:pointer;
+
+}
+
+.works-table .td-paginator{
+    display: flex;
+    font-size: 1.5em;
+    font-weight: bold;
+    align-items: center;
+    margin-left: 10px;  
+   
+}
+.works-table .td-buttons{
+    display: flex;
+    align-items: center;
+    margin:0 auto;
+}
+.works-table .buttons-container{
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    margin-left: -5%;
+}

@@ -9,22 +9,12 @@ import { getProjectById } from "../services/projects";
 import Layout from '../components/layout'
 import { navigate } from "gatsby"
 import { isLoggedIn } from "../services/auth"
-import styled from 'styled-components'
+
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 let _this;
+ 
 
-const StyledContainerIcon = styled.div`
-display: flex;
-justify-content: flex-end;
-padding: 1em;
-`
-const StyledIcon = styled.i`
-font-size:1em;
-cursor:pointer;
-margin-top: 1.2em;
-margin-right: 1.2em;
-`
 class Reports extends React.Component {
   constructor(props) {
     super(props)
@@ -64,9 +54,9 @@ class Reports extends React.Component {
                       <h2 id="logWorkTitle">Work Reports</h2>
 
                     </div>
-                    <StyledContainerIcon className="col-4" data-toggle="tooltip" data-placement="top" title={'EXPORT DATA'}>
-                      <StyledIcon className="fa fa-download" aria-hidden="true" onClick={this.downloadLoggedworksCSV}></StyledIcon>
-                    </StyledContainerIcon>
+                    <div className="col-4 reports-container-icons" data-toggle="tooltip" data-placement="top" title={'EXPORT DATA'}>
+                      <i className="fa fa-download" aria-hidden="true" onClick={this.downloadLoggedworksCSV}></i>
+                    </div>
                   </div>
                   <WorksTable logworksList={_this.state.inFetch ? [] : _this.state.logworks} isEditable={false} back={this.previousPage} next={this.nextPage} maxPage={_this.state.inFetch ? 0 : _this.state.maxPage} currentPage={_this.state.paginatorNumber} />
                   {_this.state.inFetch && <div>
