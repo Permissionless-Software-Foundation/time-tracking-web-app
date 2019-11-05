@@ -1,57 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { updateProject, newProject } from "../../services/projects";
+import './project.css'
 
-
-
-const StyledButton = styled.a`
-  margin: 10px;
-  margin-bottom: 25px;
-`
-const StyledButton2 = styled.button`
-  margin-bottom: 25px;
-  width:30%;
-`
-const StyledButton3 = styled.button`
-margin-top: 5px;
-  margin-bottom: 25px;
-  width:50%;
-`
-const StyledContentTypes = styled.div`
-display:flex
-`
-
-const OutMsgError = styled.p`
-  color: red;
-  font-weight: bold;
-  size: 18px;
-`
-const OutMsgWarning = styled.p`
-  color: #ffae42;
-  font-weight: bold;
-  size: 18px;
-`
-const OutMsgSuccess = styled.p`
-  color: green;
-  font-weight: bold;
-  size: 18px;
-`
-const StyledSelect = styled.select`
-  width:69%;
-  margin-right:1%;
-  justify-content: flex-start;
-  margin-bottom: 25px;
-  -webkit-appearance: menulist;
-`
-const StyledSelect2 = styled.select`
-  margin-bottom: 25px;
-  -webkit-appearance: menulist;
-`
-const StyledOption = styled.option`
-  margin: 5px;
-  color: black;
-  `
 let _this
 
 class ProjectForm extends React.Component {
@@ -91,64 +42,64 @@ class ProjectForm extends React.Component {
         <input type="text" name="title" value={this.state.project.title} onChange={this.handleUpdate} />
         <br />
         Project Lead:<br />
-        <StyledSelect2 id="selectProjectLead" name="projectLead" onChange={this.handleUpdate}>
-          <StyledOption value="">Select  Lead</StyledOption>
+        <select className="selectProject" id="selectProjectLead" name="projectLead" onChange={this.handleUpdate}>
+          <option value="">Select  Lead</option>
           {
-            _this.props.users.map(val =><StyledOption value={val._id} key={val._id}>{val.username.toUpperCase()}</StyledOption>)
-            }
-        </StyledSelect2>
+            _this.props.users.map(val => <option value={val._id} key={val._id}>{val.username.toUpperCase()}</option>)
+          }
+        </select>
         <br />
         Description:<br />
-        <textarea  rows="3"  name="briefContent" value={this.state.project.briefContent} onChange={this.handleUpdate} />
+        <textarea rows="3" name="briefContent" value={this.state.project.briefContent} onChange={this.handleUpdate} />
         <br />
 
         Project Contact:<br />
-        <StyledSelect2 id="selectProjectContact" name="projectContact" onChange={this.handleUpdate}>
-          <StyledOption value="">Select Contact</StyledOption>
+        <select className="selectProject" id="selectProjectContact" name="projectContact" onChange={this.handleUpdate}>
+          <option value="">Select Contact</option>
           {
-            _this.props.users.map(val =><StyledOption value={val._id} key={val._id}>{val.username.toUpperCase()}</StyledOption>)
-            }
-        </StyledSelect2>
+            _this.props.users.map(val => <option value={val._id} key={val._id}>{val.username.toUpperCase()}</option>)
+          }
+        </select>
         <br />
         Types of Work:<br />
-        <StyledContentTypes>
-          <StyledSelect id="select" name="typeWorkSelected" onChange={this.handleUpdateWork}>
-            <StyledOption value="">View Types of Work</StyledOption>
+        <div className="content-type">
+          <select className="selectType" id="select" name="typeWorkSelected" onChange={this.handleUpdateWork}>
+            <option value="">View Types of Work</option>
             {
-              _this.state.project.typesOfWork.map(val => <StyledOption value={val} key={val}>{val}</StyledOption>)
+              _this.state.project.typesOfWork.map(val => <option value={val} key={val}>{val}</option>)
             }
-          </StyledSelect>
-          <StyledButton2 className="button special" id="newType" onClick={_this.state.typeWorkSelected ? this.deleteTypeWork : this.newTypeWork}>
+          </select>
+          <button className="button special btn-type1 " id="newType" onClick={_this.state.typeWorkSelected ? this.deleteTypeWork : this.newTypeWork}>
             {_this.state.typeWorkSelected ? 'Delete' : 'New'}
-          </StyledButton2>
-        </StyledContentTypes>
+          </button>
+        </div>
 
         {
 
           (_this.state.newType && !_this.state.typeWorkSelected) &&
           <div>
             <input type="text" name="workToAdd" placeholder="Type of Work" onChange={this.handleUpdateWork} />
-            <StyledContentTypes>
-              <StyledButton3 className="button " id="newType" onClick={this.newTypeWork}>
+            <div className="content-type">
+              <button className="button btn-type2" id="newType" onClick={this.newTypeWork}>
                 Cancel
-</StyledButton3>
-              <StyledButton3 className="button special" id="newType" onClick={this.addTypeWork}>
+              </button>
+              <button className="button special btn-type2" id="newType" onClick={this.addTypeWork}>
                 Add
-</StyledButton3>
-            </StyledContentTypes>
+              </button>
+            </div>
 
           </div>
 
         }
-         {((_this.state.newType || _this.state.typeWorkSelected)&& !this.state.isNew)&& <OutMsgWarning>The changes will be applied after clicking UPDATE PROJECT</OutMsgWarning> }
-         {((_this.state.newType || _this.state.typeWorkSelected)&& this.state.isNew)&& <OutMsgWarning>The changes will be applied after clicking ADD PROJECT</OutMsgWarning> }
+        {((_this.state.newType || _this.state.typeWorkSelected) && !this.state.isNew) && <p className="msg-war">The changes will be applied after clicking UPDATE PROJECT</p>}
+        {((_this.state.newType || _this.state.typeWorkSelected) && this.state.isNew) && <p className="msg-war">The changes will be applied after clicking ADD PROJECT</p>}
         <br />
-        <StyledButton href="#" className="button special" id="addProjectBtn" onClick={this.state.isNew ? this.newProject : this.updateProject}>
+        <button href="#" className="button special btn-type3" id="addProjectBtn" onClick={this.state.isNew ? this.newProject : this.updateProject}>
           {this.state.isNew ? 'Add Project' : 'Update Project'}
-        </StyledButton>
+        </button>
         <br />
-        {this.state.message.type === 'ERR' ? <OutMsgError>{this.state.message.msg}</OutMsgError> :
-          <OutMsgSuccess>{this.state.message.msg}</OutMsgSuccess>}
+        {this.state.message.type === 'ERR' ? <p className="msg-err">{this.state.message.msg}</p> :
+          <p className="msg-suc">{this.state.message.msg}</p>}
       </form>
 
     )
@@ -210,10 +161,10 @@ class ProjectForm extends React.Component {
           typesOfWork: this.props.project.typesOfWork ? this.props.project.typesOfWork : [],
         }
       })
-      const selectProjectLead = document.getElementById('selectProjectLead');
-      selectProjectLead.value = _this.state.project.projectLead
-      const selectProjectContact = document.getElementById('selectProjectContact');
-      selectProjectContact.value = _this.state.project.projectContact
+    const selectProjectLead = document.getElementById('selectProjectLead');
+    selectProjectLead.value = _this.state.project.projectLead
+    const selectProjectContact = document.getElementById('selectProjectContact');
+    selectProjectContact.value = _this.state.project.projectContact
   }
   newTypeWork(event) {
     event.preventDefault();

@@ -30,8 +30,6 @@ class Projects extends React.Component {
               <div className="col-12">
                 <center>
                   <h2>View Projects</h2>
-                  
-
                 </center>
               </div>
             </div>

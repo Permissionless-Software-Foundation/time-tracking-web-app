@@ -1,0 +1,35 @@
+.log-form{
+    padding:20px;
+}
+.log-select{
+    margin: 10px;
+    margin-bottom: 25px;
+}
+.log-select option{
+  margin: 5px;
+  color: black;
+  font-size: 14px;
+}
+.log-form input{
+    -webkit-appearance: none;
+-ms-appearance: none;
+appearance: none;
+background: rgba(212, 212, 255, 0.035);
+border: none;
+border-radius: 0;
+color: inherit;
+display: block;
+outline: 0;
+padding: 0 1em;
+text-decoration: none;
+width: 100%;
+height: 2.75em;
+
+}
+::-webkit-inner-spin-button,
+::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+}
+::-webkit-calendar-picker-indicator:hover {
+  background: rgba(212, 212, 255, 0.035);
+}

@@ -3,7 +3,6 @@
 */
 
 import React from 'react'
-import styled from 'styled-components'
 import { handleLogin, setUser } from '../services/auth'
 import { navigate } from 'gatsby'
 
@@ -11,16 +10,7 @@ import { navigate } from 'gatsby'
 const SERVER = '/api'
 //const SERVER = 'https://ovn.psfoundation.cash/api'
 
-const StyledButton = styled.a`
-  margin: 10px;
-  margin-bottom: 25px;
-`
 
-const OutMsg = styled.p`
-  color: red;
-  font-weight: bold;
-  size: 18px;
-`
 
 let _this
 
@@ -59,26 +49,26 @@ class LoginForm extends React.Component {
           onChange={this.handleUpdate}
         />
         <br></br>
-        <StyledButton
+        <button
           href="#"
-          className="button special"
+          className="button special btn-margin"
           id="createBtn"
           onClick={this.createClick}
           data-to="bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al"
         >
           Create
-        </StyledButton>
-        <StyledButton
+        </button>
+        <button
           href="#"
-          className="button special"
+          className="button special btn-margin"
           id="loginBtn"
           onClick={this.loginClick}
           data-to="bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al"
         >
           Login
-        </StyledButton>
+        </button>
         <br />
-        <OutMsg>{this.state.message}</OutMsg>
+        <p className="msg-err">{this.state.message}</p>
       </form>
     )
   }

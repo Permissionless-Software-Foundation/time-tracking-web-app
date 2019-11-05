@@ -70,3 +70,37 @@
 	@import 'layout/footer';
 	@import 'layout/wrapper';
 	@import 'layout/menu';
+
+
+//Error messages
+.msg-err{
+	color: red;
+	font-weight: bold;
+	size: 18px;
+}	
+.msg-suc{
+	color: green;
+	font-weight: bold;
+	size: 18px;
+}	
+.msg-war{
+	color: #ffae42;
+	font-weight: bold;
+	size: 18px;
+}	
+
+.btn-margin{
+    margin: 10px;
+    margin-bottom: 25px;
+}
+.reports-container-icons{
+	display: flex;
+justify-content: flex-end;
+padding: 1em;
+}
+.reports-container-icons i{
+	font-size:1em;
+cursor:pointer;
+margin-top: 1.2em;
+margin-right: 1.2em;
+}

@@ -1,26 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
 import { getProjects } from "../../services/projects";
 import { getUsers } from "../../services/users";
 
-import ProjectForm from './project-form'
+import ProjectForm from './project-form' 
+
+import  './project.css'
 
 
 
-const StyledButton = styled.a`
-  margin: 10px;
-  margin-bottom: 25px;
-`
 
-const StyledSelect = styled.select`
-  margin: 10px;
-  margin-bottom: 25px;
-`
-const StyledOption = styled.option`
-  margin: 5px;
-  color: black;
-  font-size: 16px;
-`
 let _this
 
 class EditProjectsForm extends React.Component {
@@ -41,17 +29,17 @@ class EditProjectsForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="projects-container">
         <div >
-          <StyledSelect className="button fit" id="select" name="projectSelectedIndex" onChange={this.handleUpdate} >
-            <StyledOption value="" >Select Project</StyledOption>
+          <select className="button fit styledSelect" id="select" name="projectSelectedIndex" onChange={this.handleUpdate} >
+            <option value="" >Select Project</option>
             {
-              this.state.projects.map((value, i) => <StyledOption value={i} key={value._id}> {value.title} </StyledOption>)
+              this.state.projects.map((value, i) => <option value={i} key={value._id}> {value.title} </option>)
             }
-          </StyledSelect>
-          <StyledButton onClick={this.addNew} id="addNewProject" href="#" className="button special" >
+          </select>
+          <button onClick={this.addNew} id="addNewProject" href="#" className="button special btn-type3}" >
             Add New Project
-        </StyledButton>
+        </button>
         </div>
         {this.state.projectSelectedIndex && !this.state.addNewProject ?
           <div>
