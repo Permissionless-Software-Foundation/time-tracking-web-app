@@ -7,8 +7,8 @@ import { handleLogin, setUser } from '../services/auth'
 import { navigate } from 'gatsby'
 
 //const SERVER = `http://localhost:5001`;
-const SERVER = '/api'
-//const SERVER = 'https://ovn.psfoundation.cash/api'
+// const SERVER = '/api'
+const SERVER = 'https://ovn.psfoundation.cash/api'
 
 
 
