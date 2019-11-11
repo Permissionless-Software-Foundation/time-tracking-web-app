@@ -23,10 +23,10 @@ const Menu = (props) => (
                         logout(() => navigate(`/`));
                     }} className="button special fit">Log Out</Link>}</li>
                  {  ensureAdmin() && <li><Link onClick={props.onToggleMenu} className="button  fit" to='/editprojects'>Edit Projects</Link></li>}
-                    <li><Link onClick={props.onToggleMenu} className="button  fit" to={isLoggedIn() ? '/logwork' :'/login'}>Log Work</Link></li>
-                    <li><Link onClick={props.onToggleMenu} className="button  fit" to="/projects">View Projects</Link></li>
-                    <li><Link onClick={props.onToggleMenu} className="button  fit" to="/reports">Work Reports</Link></li>
-                    <li><Link onClick={props.onToggleMenu} className="button  fit" to={isLoggedIn() ? '/profile' :'/login'}>Profile</Link></li>
+                    <li><Link name="logwork" onClick={props.onToggleMenu} className="button  fit" to={isLoggedIn() ? '/logwork' :'/login'}>Log Work</Link></li>
+                    <li><Link name="projects" onClick={props.onToggleMenu} className="button  fit" to="/projects">View Projects</Link></li>
+                    <li><Link name="reports" onClick={props.onToggleMenu} className="button  fit" to="/reports">Work Reports</Link></li>
+                    <li><Link name="profile" onClick={props.onToggleMenu} className="button  fit" to={isLoggedIn() ? '/profile' :'/login'}>Profile</Link></li>
             </ul>
         </div>
         <a className="close" onClick={props.onToggleMenu} href="javascript:;">Close</a>

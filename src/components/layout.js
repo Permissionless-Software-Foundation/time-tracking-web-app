@@ -2,14 +2,14 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { navigate} from 'gatsby'
+import { navigate } from 'gatsby'
 import '../assets/scss/main.scss'
 import Header from './Header'
 import Menu from './Menu'
 import Contact from './Contact'
 import Footer from './Footer'
-import {getUserById} from '../services/users'
-import {getUser ,logout} from '../services/auth'
+import { getUserById } from '../services/users'
+import { getUser, logout } from '../services/auth'
 
 
 class Layout extends React.Component {
@@ -22,40 +22,47 @@ class Layout extends React.Component {
         this.handleToggleMenu = this.handleToggleMenu.bind(this)
     }
 
-    componentDidMount () {
+    componentDidMount() {
         this.timeoutId = setTimeout(() => {
-            this.setState({loading: ''});
+            this.setState({ loading: '' });
         }, 100);
-  
-            this.verifyLogin();
-       
-        
+
+        this.verifyLogin();
+
+
     }
 
-    componentWillUnmount () {
+    componentWillUnmount() {
         if (this.timeoutId) {
             clearTimeout(this.timeoutId);
         }
     }
 
-    handleToggleMenu() {
+    handleToggleMenu(event) {
         this.setState({
             isMenuVisible: !this.state.isMenuVisible
         })
+        this.handleRouter(event)
+    }
+    handleRouter(event) {
+
+        event.target.name ? localStorage.setItem('routeTo', event.target.name) :
+            localStorage.setItem('routeTo', null)
+
     }
     async verifyLogin() {
-        
-      const user = getUser();
-      console.log(user)
-      if(!user.id){
-        return;
-      }else{
-        const resp = await getUserById(user.id);
-        if(!resp){ 
-            logout(() => navigate(`/`))
-        }
 
-      }
+        const user = getUser();
+        console.log(user)
+        if (!user.id) {
+            return;
+        } else {
+            const resp = await getUserById(user.id);
+            if (!resp) {
+                logout(() => navigate(`/`))
+            }
+
+        }
     }
     render() {
         const { children } = this.props

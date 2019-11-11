@@ -143,8 +143,10 @@ class LoginForm extends React.Component {
       }))
       return
     }
-
-    navigate(`/`)
+    const path = localStorage.getItem("routeTo");
+    localStorage.setItem('routeTo', null)
+   // debugger;
+    path ? navigate(path) : navigate(`/`)
   }
 
   validateEntries() {
