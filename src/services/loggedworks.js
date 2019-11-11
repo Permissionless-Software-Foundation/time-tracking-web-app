@@ -3,8 +3,8 @@ import { getUser } from './auth'
 
 //const SERVER = `http://localhost:5001`;
 //const SERVER = `/api`
-  const SERVER = 'https://ovn.psfoundation.cash/api'
-
+//const SERVER = 'https://ovn.psfoundation.cash/api'
+  const SERVER = process.env.GATSBY_API_URL
 // Detect if the app is running in a browser.
 export const isBrowser = () => typeof window !== 'undefined'
 // url to download cvs loggedworks data

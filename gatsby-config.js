@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+console.log(`enviroment .env.${process.env.NODE_ENV}`)
 module.exports = {
   siteMetadata: {
     title: "Gatsby IPFS Boilerplate Starter",
