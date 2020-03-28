@@ -4,6 +4,12 @@ import React from 'react'
 import { Link, navigate } from 'gatsby'
 import { isLoggedIn } from "../services/auth";
 
+const handleRouter = event => {
+
+  event.target.name ? localStorage.setItem('routeTo', event.target.name) :
+    localStorage.setItem('routeTo', null)
+
+}
 const Banner = props => (
   <section id="banner" className="major">
     <div className="inner">
@@ -22,7 +28,7 @@ const Banner = props => (
 
         <ul className="actions">
           <li>
-            <Link className="button next scrolly" to={isLoggedIn() ? '/logwork' : '/login'}>Get Started</Link>
+            <Link name="logwork" onClick={handleRouter} className="button next scrolly" to={isLoggedIn() ? '/logwork' : '/login'}>Get Started</Link>
             { /*   <a href="/logwork" className="button next scrolly">
               Get Started
             </a>*/}
@@ -32,5 +38,6 @@ const Banner = props => (
     </div>
   </section>
 )
+
 
 export default Banner

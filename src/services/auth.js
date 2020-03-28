@@ -1,10 +1,10 @@
 import 'isomorphic-fetch'
 
 //const SERVER = `http://localhost:5000`;
-// const SERVER = `http://localhost:5001`;
-const SERVER = 'https://ovn.psfoundation.cash/api'
+//const SERVER = `http://localhost:5001`;
+//const SERVER = 'https://ovn.psfoundation.cash/api'
 //const SERVER = '/api'
-
+  const SERVER = process.env.GATSBY_API_URL
 // Detect if the app is running in a browser.
 export const isBrowser = () => typeof window !== 'undefined'
 
