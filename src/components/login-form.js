@@ -8,8 +8,8 @@ import { navigate } from 'gatsby'
 
 //const SERVER = `http://localhost:5001`;
 // const SERVER = '/api'
-const SERVER = 'https://ovn.psfoundation.cash/api'
-
+// const SERVER = 'https://ovn.psfoundation.cash/api'
+const SERVER = process.env.GATSBY_API_URL
 
 
 let _this
@@ -144,9 +144,10 @@ class LoginForm extends React.Component {
       return
     }
     const path = localStorage.getItem("routeTo");
+    console.log("path : ", path)
     localStorage.setItem('routeTo', null)
-   // debugger;
-    path ? navigate(path) : navigate(`/`)
+    // debugger;
+    path && path !== "null" ? navigate(path) : navigate(`/`)
   }
 
   validateEntries() {
