@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react'
 import { getProjects } from "../../services/projects";
 import { getUsers } from "../../services/users";
