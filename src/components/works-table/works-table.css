@@ -2,6 +2,7 @@
     display:block!important;
     text-align:center;
     padding:1em; 
+    max-width: 100vw;
 }
 .works-table thead{
     display:block!important;
